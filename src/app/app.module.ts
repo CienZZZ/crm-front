@@ -14,11 +14,13 @@ import { environment } from '../environments/environment';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import {ROOT_REDUCERS} from './store';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
