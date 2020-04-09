@@ -11,6 +11,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import { CoreModule } from './core.module';
+import { SharedModule } from './shared/shared.module';
+import {ROOT_REDUCERS} from './store';
 
 
 @NgModule({
@@ -22,11 +25,12 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    // StoreModule.forRoot(), /* Initialise the Central Store with Application's main reducer*/
+    StoreModule.forRoot(ROOT_REDUCERS), /* Initialise the Central Store with Application's main reducer*/
     EffectsModule.forRoot([]), /* Start monitoring app's side effects */
     StoreDevtoolsModule.instrument({ logOnly: environment.production}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-
+    CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
