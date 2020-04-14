@@ -29,7 +29,7 @@ import { HeaderComponent } from './header/header.component';
     NgbModule,
     StoreModule.forRoot(ROOT_REDUCERS), /* Initialise the Central Store with Application's main reducer*/
     EffectsModule.forRoot([]), /* Start monitoring app's side effects */
-    StoreDevtoolsModule.instrument({ logOnly: environment.production}),
+    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 40 }) : [],
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     CoreModule,
     SharedModule

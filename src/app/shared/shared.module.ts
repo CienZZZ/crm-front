@@ -4,14 +4,14 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // import { AlertComponent } from './alert/alert.component';
-// import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 // import { DropdownDirective } from './dropdown.directive';
 // import { PlaceholderDirective } from './placeholder/placeholder.directive';
 
 @NgModule({
   declarations: [
     // AlertComponent,
-    // LoadingSpinnerComponent,
+    LoadingSpinnerComponent,
     // DropdownDirective,
     // PlaceholderDirective
   ],
@@ -22,7 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   exports: [
     // AlertComponent,
-    // LoadingSpinnerComponent,
+    LoadingSpinnerComponent,
     // DropdownDirective,
     CommonModule,
     FullCalendarModule,
