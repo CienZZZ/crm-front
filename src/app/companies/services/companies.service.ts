@@ -13,25 +13,25 @@ export class CompaniesService {
 
   index(): Observable<Company[]> {
     return this.http
-        .get<Company[]>('${environment.databaseURL}/company');
+        .get<Company[]>(`${environment.appApi.baseUrl}/company`);
   }
 
   show(companyId: number): Observable<Company> {
     return this.http
-        .get<Company>('${environment.databaseURL}/company/${companyId}');
+        .get<Company>(`${environment.appApi.baseUrl}/company/${companyId}`);
   }
 
   create(company: Company): Observable<Company> {
-    return this.http.post<Company>('${environment.databaseURL}/company', company);
+    return this.http.post<Company>(`${environment.appApi.baseUrl}/company`, company);
   }
 
   update(company: Partial<Company>): Observable<Company> {
-    return this.http.patch<Company>('${environment.databaseURL}/company/${company.id}', company);
+    return this.http.patch<Company>(`${environment.appApi.baseUrl}/company/${company.id}`, company);
   }
 
 
   destroy(id: number): Observable<Company> {
-    return this.http.delete<Company>('${environment.databaseURL}/company/${id}');
+    return this.http.delete<Company>(`${environment.appApi.baseUrl}/company/${id}`);
   }
 
 }
