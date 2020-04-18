@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  isAuthenticated = false;
+  isAuthenticated = true;
   username = '';
   private userSub: Subscription;
 

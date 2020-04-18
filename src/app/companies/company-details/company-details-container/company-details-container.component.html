@@ -1,0 +1,19 @@
+<div class="company-details-container" *ngIf="company">
+  <div class="card">
+    <div class="card-header">
+      Company
+    </div>
+    <div class="card-body">
+      <p>Name: <span class="badge badge-primary">{{company.name}}</span></p>
+      <p>Full Name:  <span class="badge badge-primary">{{company.full_name}}</span></p>
+      <p>Created By:  <span class="badge badge-primary">{{company.created_by}}</span></p>
+    </div>
+    <div class="card-footer text-muted">
+      <span class="float-md-right ">
+        <button (click)="edit.emit(company)" class="btn btn-sm btn-outline-primary"> EDIT</button>
+        <button (click)="remove.emit(company)" class="btn btn-sm btn-outline-danger"> DELETE</button>
+      </span>
+    </div>
+  </div>
+</div>
+

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  firebaseAPIKey: 'AIzaSyD9uhg6tNVKMpctY9Jt6WpDFAq5BeBYOoM',
-  databaseURL: 'https://front-we-crm.firebaseio.com/'
+  firebaseAPIKey: 'AIzaSyCsoYgnbTpo3N7f7_RObx-z0snwwuIuRRs ',
+  databaseURL: 'https://crm-front-52411.firebaseio.com'
 };
 
 /*

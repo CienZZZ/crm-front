@@ -1,0 +1,8 @@
+<h1>Company List</h1>
+
+<app-company-list
+  [companies]="companies$ | async"
+  (show)="showCompany($event)"
+  (remove)="deleteCompany($event)"
+  (edit)="editCompany($event)"
+></app-company-list>

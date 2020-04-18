@@ -29,6 +29,7 @@
     "@fullcalendar/timegrid": "^4.4.0",
     "@ng-bootstrap/ng-bootstrap": "^6.0.2",
     "@ngrx/effects": "^9.1.0",
+    "@ngrx/entity": "^9.1.0",
     "@ngrx/router-store": "^9.1.0",
     "@ngrx/store": "^9.1.0",
     "@ngrx/store-devtools": "^9.1.0",

@@ -1,0 +1,5 @@
+<app-company-details-container
+  [company]="company$ | async"
+  (edit)="editCompany($event)"
+  (remove)="deleteCompany($event)"
+></app-company-details-container>
