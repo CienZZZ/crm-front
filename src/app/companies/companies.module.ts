@@ -17,6 +17,7 @@ import { CompanyEditComponent } from './company-edit/company-edit.component';
 import { CompanyListComponent } from './companies-index/company-list/company-list.component';
 import { CompaniesIndexComponent } from './companies-index/companies-index.component';
 import { CompanyNewComponent } from './company-new/company-new.component';
+import { CompaniesSocketService } from './services/companies-socket.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { CompanyNewComponent } from './company-new/company-new.component';
     StoreModule.forFeature('companies', reducers),
     EffectsModule.forFeature([CompanyEffects])
   ],
-  providers: [CompaniesService, CompanyStoreFacade]
+  providers: [CompaniesService, CompaniesSocketService, CompanyStoreFacade]
 })
 
 export class CompaniesModule {

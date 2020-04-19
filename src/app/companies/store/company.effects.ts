@@ -9,7 +9,6 @@ import {
 } from 'rxjs/operators';
 import {Actions, createEffect, Effect, ofType} from '@ngrx/effects';
 
-// import {ContactsSocketService} from '../services/contacts-socket.service';
 import {
   create,
   createSuccess,
@@ -24,6 +23,7 @@ import {
   updateSuccess
 } from './company.actions';
 import { CompaniesService } from '../services/companies.service';
+import { CompaniesSocketService } from '../services/companies-socket.service';
 
 
 /**
@@ -88,26 +88,26 @@ export class CompanyEffects {
 
   // Socket Live Events
 
-  // @Effect()
-  // liveCreate$ = this.contactsSocket.liveCreated$.pipe(
-  //   map(contact => createSuccess({contact}))
-  // );
+  @Effect()
+  liveCreate$ = this.companiesSocket.liveCreated$.pipe(
+    map(company => createSuccess({company}))
+  );
 
 
-  // @Effect()
-  // liveUpdate$ = this.contactsSocket.liveUpdated$.pipe(
-  //   map(contact => updateSuccess({contact}))
-  // );
+  @Effect()
+  liveUpdate$ = this.companiesSocket.liveUpdated$.pipe(
+    map(company => updateSuccess({company}))
+  );
 
-  // @Effect()
-  // liveDestroy$ = this.contactsSocket.liveDeleted$.pipe(
-  //   map(id => removeSuccess({id}))
-  // );
+  @Effect()
+  liveDestroy$ = this.companiesSocket.liveDeleted$.pipe(
+    map(id => removeSuccess({id}))
+  );
 
   constructor(
     private actions$: Actions,
-    private companiesService: CompaniesService
-    // private contactsSocket: ContactsSocketService
+    private companiesService: CompaniesService,
+    private companiesSocket: CompaniesSocketService
   ) {}
 
 }
