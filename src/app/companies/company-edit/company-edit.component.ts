@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyStoreFacade } from '../store/company.store-facade';
 import { CompanyEffects } from '../store/company.effects';
@@ -9,7 +9,8 @@ import { Company } from '../model/company.model';
 @Component({
   selector: 'app-company-edit',
   templateUrl: './company-edit.component.html',
-  styleUrls: ['./company-edit.component.css']
+  styleUrls: ['./company-edit.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyEditComponent implements OnInit, OnDestroy {
 

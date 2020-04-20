@@ -1,11 +1,12 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Company } from '../../model/company.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-company-form',
   templateUrl: './company-form.component.html',
-  styleUrls: ['./company-form.component.css']
+  styleUrls: ['./company-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyFormComponent implements OnInit, OnChanges {
 

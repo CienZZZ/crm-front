@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CompanyStoreFacade } from '../store/company.store-facade';
 import { Router } from '@angular/router';
 import { Company } from '../model/company.model';
@@ -6,7 +6,8 @@ import { Company } from '../model/company.model';
 @Component({
   selector: 'app-company-new',
   templateUrl: './company-new.component.html',
-  styleUrls: ['./company-new.component.css']
+  styleUrls: ['./company-new.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyNewComponent implements OnInit, OnDestroy {
 

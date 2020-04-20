@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CompanyStoreFacade } from '../store/company.store-facade';
 import { Router } from '@angular/router';
 import { Company } from '../model/company.model';
@@ -6,7 +6,8 @@ import { Company } from '../model/company.model';
 @Component({
   selector: 'app-companies-index',
   templateUrl: './companies-index.component.html',
-  styleUrls: ['./companies-index.component.css']
+  styleUrls: ['./companies-index.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompaniesIndexComponent implements OnInit {
 

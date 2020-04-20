@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyStoreFacade } from '../store/company.store-facade';
 import { CompanyEffects } from '../store/company.effects';
@@ -9,7 +9,8 @@ import { Company } from '../model/company.model';
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
-  styleUrls: ['./company-details.component.css']
+  styleUrls: ['./company-details.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyDetailsComponent implements OnInit, OnDestroy {
 
@@ -50,6 +51,7 @@ export class CompanyDetailsComponent implements OnInit, OnDestroy {
     const r = confirm('Are you sure?');
     if (r) {
       this.companiesFacade.deleteCompany(company.id);
+      this.router.navigate(['/companies']);
     }
   }
 
