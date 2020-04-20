@@ -1,9 +1,10 @@
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-company-start',
   templateUrl: './company-start.component.html',
-  styleUrls: ['./company-start.component.css']
+  styleUrls: ['./company-start.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CompanyStartComponent implements OnInit {
