@@ -18,6 +18,7 @@ import { CompanyListComponent } from './companies-index/company-list/company-lis
 import { CompaniesIndexComponent } from './companies-index/companies-index.component';
 import { CompanyNewComponent } from './company-new/company-new.component';
 import { CompaniesSocketService } from './services/companies-socket.service';
+import { CompanyStartComponent } from './company-start/company-start.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CompaniesSocketService } from './services/companies-socket.service';
     CompanyEditComponent,
     CompanyListComponent,
     CompaniesIndexComponent,
-    CompanyNewComponent
+    CompanyNewComponent,
+    CompanyStartComponent
   ],
   imports: [
     RouterModule,

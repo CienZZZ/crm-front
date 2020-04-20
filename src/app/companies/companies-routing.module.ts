@@ -5,6 +5,7 @@ import { CompaniesIndexComponent } from './companies-index/companies-index.compo
 import { CompanyNewComponent } from './company-new/company-new.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { CompanyEditComponent } from './company-edit/company-edit.component';
+import { CompanyStartComponent } from './company-start/company-start.component';
 // import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     component: CompaniesComponent,
     // canActivate: [AuthGuard],
     children: [
-      { path: '', component: CompaniesIndexComponent},
+      // { path: '', component: CompaniesIndexComponent},
+      { path: '', component: CompanyStartComponent},
       { path: 'new', component: CompanyNewComponent},
       { path: ':companyId', component: CompanyDetailsComponent},
       { path: ':companyId/edit', component: CompanyEditComponent}
