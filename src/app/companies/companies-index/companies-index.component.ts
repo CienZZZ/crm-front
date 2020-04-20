@@ -20,6 +20,10 @@ export class CompaniesIndexComponent implements OnInit {
 
   ngOnInit() {}
 
+  newCompany() {
+    this.router.navigate(['/companies/new']);
+  }
+
   editCompany(company: Company) {
     this.router.navigate(['/companies', company.id, 'edit']);
   }
@@ -32,6 +36,7 @@ export class CompaniesIndexComponent implements OnInit {
     const r = confirm('Are you sure ?');
     if (r) {
       this.companiesFacade.deleteCompany(company.id);
+      this.router.navigate(['/companies']);
     }
   }
 }
