@@ -12,7 +12,7 @@ import { SocketIoModule } from 'ngx-socket-io';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
-import { CoreModule } from './core.module';
+import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import {ROOT_REDUCERS} from './store';
 import { HeaderComponent } from './header/header.component';

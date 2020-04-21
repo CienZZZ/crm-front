@@ -61,10 +61,10 @@ export class CompanyEffects {
     pluck('company'),
     switchMap( company => this.companiesService.create(company).pipe(
       map(company => createSuccess({company})),
-      catchError(err => {
-        alert(err.message);
-        return of(failure({err: {concern: 'CREATE', error: err}}));
-      })
+      // catchError(err => {
+      //   alert(err.message);
+      //   return of(failure({err: {concern: 'CREATE', error: err}}));
+      // })
     ))
   ));
 

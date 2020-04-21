@@ -1,7 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, Event } from '@angular/router';
 import * as fromRoot from './store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import * as fromRoot from './store';
 export class AppComponent {
   title = 'CRM-front';
 
+  error$: Observable<any>;
   isLoading = false;
 
   constructor(private store: Store<fromRoot.State>, private router: Router) {
@@ -33,5 +35,7 @@ export class AppComponent {
         }
       }
     });
+
+    this.error$ = this.store.pipe(select(fromRoot.getError));
   }
 }

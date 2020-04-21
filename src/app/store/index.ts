@@ -22,3 +22,5 @@ export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<State, Action>>
 export const getUiState = createFeatureSelector<fromUi.UiState>('ui');
 
 export const getCurrentTitle = createSelector(getUiState, fromUi.getCurrentTitle);
+
+export const getError = createSelector(getUiState, fromUi.getError);

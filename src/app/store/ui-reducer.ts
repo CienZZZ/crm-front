@@ -4,10 +4,12 @@ import {setState} from '../helpers/ngrx.helpers';
 
 export interface UiState {
   currentTitle: string;
+  error: any;
 }
 
 export const INIT_UI_STATE: UiState = {
-  currentTitle: undefined
+  currentTitle: undefined,
+  error: undefined
 };
 
 export const reducer = createReducer(
@@ -20,3 +22,4 @@ export const reducer = createReducer(
 
 // SELECTORS
 export const getCurrentTitle = (state: UiState) => state ? state.currentTitle : null;
+export const getError = (state: UiState) => state ? state.error : null;
