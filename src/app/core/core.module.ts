@@ -7,11 +7,6 @@ import { ModalContentComponent } from './services/modal/modal-content.component'
 
 @NgModule({
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptorService,
-    //   multi: true
-    // },
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler
@@ -20,7 +15,12 @@ import { ModalContentComponent } from './services/modal/modal-content.component'
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
-    }
+    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptorService,
+    //   multi: true
+    // }
   ],
   declarations: [
     ModalContentComponent

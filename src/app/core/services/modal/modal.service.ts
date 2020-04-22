@@ -9,8 +9,9 @@ export class ModalService {
 
   constructor(private modalService: NgbModal) {}
 
-  open(message: string) {
+  open(title: string, message: string) {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.message = message;
+    modalRef.componentInstance.title = title;
   }
 }

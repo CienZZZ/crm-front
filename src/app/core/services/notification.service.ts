@@ -12,14 +12,16 @@ export class NotificationService {
   ) { }
 
   showSuccess(message: string) {
+    const title = 'Information';
     this.zone.run(() => {
-      this.modalService.open(message);
+      this.modalService.open(title, message);
     });
   }
 
   showError(message: string) {
+    const title = 'Error';
     this.zone.run(() => {
-      this.modalService.open(message);
+      this.modalService.open(title, message);
     });
   }
 }
