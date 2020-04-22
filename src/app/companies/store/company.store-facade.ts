@@ -23,7 +23,7 @@ export class CompanyStoreFacade {
     this.store.dispatch(create({company}));
   }
 
-  updateContact(company: Company) {
+  updateCompany(company: Company) {
     this.store.dispatch(update({company}));
   }
 

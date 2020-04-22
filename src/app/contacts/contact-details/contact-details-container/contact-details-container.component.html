@@ -1,0 +1,20 @@
+<div class="contact-details-container" *ngIf="contact">
+  <div class="card">
+    <div class="card-header">
+      Contact
+    </div>
+    <div class="card-body">
+      <p>Company ID: <span class="badge badge-primary">{{contact.company_id}}</span></p>
+      <p>Name: <span class="badge badge-primary">{{contact.name}}</span></p>
+      <p>Business Email:  <span class="badge badge-primary">{{contact.business_email}}</span></p>
+      <p>Created By:  <span class="badge badge-primary">{{contact.created_by}}</span></p>
+    </div>
+    <div class="card-footer text-muted">
+      <span class="float-md-right ">
+        <button (click)="edit.emit(contact)" class="btn btn-sm btn-outline-primary"> EDIT</button>
+        <button (click)="remove.emit(contact)" class="btn btn-sm btn-outline-danger"> DELETE</button>
+      </span>
+    </div>
+  </div>
+</div>
+

@@ -48,6 +48,6 @@ export class CompanyEditComponent implements OnInit, OnDestroy {
   }
 
   submitted(company: Company) {
-    this.companiesFacade.updateContact(company);
+    this.companiesFacade.updateCompany(company);
   }
 }

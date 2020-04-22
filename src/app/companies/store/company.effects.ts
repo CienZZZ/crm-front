@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+// import { of } from 'rxjs';
 import {
-  catchError,
   exhaustMap,
   map, pluck,
   startWith,
@@ -12,7 +11,6 @@ import {Actions, createEffect, Effect, ofType} from '@ngrx/effects';
 import {
   create,
   createSuccess,
-  failure,
   load,
   loadAll,
   loadAllSuccess,
@@ -61,7 +59,7 @@ export class CompanyEffects {
     pluck('company'),
     switchMap( company => this.companiesService.create(company).pipe(
       map(company => createSuccess({company})),
-      // catchError(err => {
+      // catchError(err => {      // all errors are catched global
       //   alert(err.message);
       //   return of(failure({err: {concern: 'CREATE', error: err}}));
       // })

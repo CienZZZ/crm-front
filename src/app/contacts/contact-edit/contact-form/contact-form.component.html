@@ -1,0 +1,30 @@
+<form (submit)="submit()"  class="form" [formGroup]="form">
+  <div class="form-group">
+    <label for="company_id-input">Company ID:</label>
+    <input id="company_id-input" type="number" class="form-control" formControlName="company_id">
+  </div>
+
+  <div class="form-group">
+    <label for="name-input">Name:</label>
+    <input id="name-input" type="text" class="form-control" formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label for="business_email-input">Business Email:</label>
+    <input id="business_email-input" type="email" class="form-control" formControlName="business_email">
+  </div>
+
+  <div class="form-group">
+    <label for="created_by-input">Created By:</label>
+    <input id="created_by-input" type="text" class="form-control" formControlName="created_by">
+  </div>
+
+  <div class="form-group">
+    <button
+            type="submit"
+            [disabled]="!form.valid"
+            class="btn btn-success float-right">
+      Submit
+    </button>
+  </div>
+</form>

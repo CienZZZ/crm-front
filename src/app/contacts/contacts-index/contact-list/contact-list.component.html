@@ -1,7 +1,8 @@
-<table *ngIf="companies; else loading" class="table table-hover table-responsive-md">
+<table *ngIf="contacts; else loading" class="table table-hover table-responsive-md">
   <thead class="header">
   <tr>
     <th>#</th>
+    <th>Company ID</th>
     <th>Name</th>
     <th>Full Name</th>
     <th>Created By</th>
@@ -9,20 +10,21 @@
   </tr>
   </thead>
   <tbody>
-  <tr class="company-row" *ngFor="let c of companies; trackBy: companiesTrackByFn">
+  <tr class="contact-row" *ngFor="let c of contacts; trackBy: contactsTrackByFn">
     <th scope="row">{{c.id}}</th>
+    <td>{{c.company_id}}</td>
     <td>{{c.name}}</td>
-    <td>{{c.full_name}}</td>
+    <td>{{c.business_email}}</td>
     <td>{{c.created_by}}</td>
     <td>
       <span class="float-right">
         <button (click)="showDetails(c)" class="btn btn-outline-primary mb-1 btn-sm">
           DETAILS
         </button>
-        <button (click)="editCompany(c)" class="btn btn-outline-primary mb-1 btn-sm">
+        <button (click)="editContact(c)" class="btn btn-outline-primary mb-1 btn-sm">
           EDIT
         </button>
-        <button (click)="deleteCompany(c)" class="btn btn-outline-danger mb-1 btn-sm">
+        <button (click)="deleteContact(c)" class="btn btn-outline-danger mb-1 btn-sm">
           DELETE
         </button>
       </span>
@@ -32,5 +34,5 @@
 </table>
 
 <ng-template #loading>
-  <span>loading companies...</span>
+  <span>loading contacts...</span>
 </ng-template>

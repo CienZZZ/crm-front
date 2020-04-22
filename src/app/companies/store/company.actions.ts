@@ -52,7 +52,7 @@ export const removeSuccess = createAction(
 );
 
 
-export const failure = createAction(
-  '[Companies] Failure',
-  props<{err: {concern: 'CREATE' | 'PATCH', error: any}}>()
-);
+// export const failure = createAction(   // we have global error handling
+//   '[Companies] Failure',
+//   props<{err: {concern: 'CREATE' | 'PATCH', error: any}}>()
+// );

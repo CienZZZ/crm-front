@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-9">
+    <h1>Contact List </h1>
+  </div>
+  <div class="col-md-3 align-self-center">
+    <button (click)="newContact()" class="btn btn-outline-success mb-1 btn-sm">NEW CONTACT</button>
+  </div>
+</div>
+
+<app-contact-list
+  [contacts]="contacts$ | async"
+  (show)="showContact($event)"
+  (remove)="deleteContact($event)"
+  (edit)="editContact($event)"
+></app-contact-list>

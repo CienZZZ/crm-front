@@ -1,12 +1,12 @@
 import { OnInit, Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-company-start',
+  selector: 'app-contact-start',
   template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class CompanyStartComponent implements OnInit {
+export class ContactStartComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
