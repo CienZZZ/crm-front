@@ -1,5 +1,5 @@
 export interface Contact {
-  id: number,
+  id: number;
   company_id: number;
   name: string;
   business_email: string;
