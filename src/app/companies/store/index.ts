@@ -1,17 +1,24 @@
 import * as fromCompanies from './company.reducer';
-import {Action, combineReducers, createFeatureSelector, createSelector} from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+import {Action, combineReducers, createFeatureSelector, createSelector, ActionReducerMap} from '@ngrx/store';
 
 export interface CompaniesState {
   companies: fromCompanies.State;
 }
 
-/** Provide reducers with AoT-compilation compliance */
-export function reducers(state: CompaniesState | undefined, action: Action) {
-  return combineReducers({
-    companies: fromCompanies.reducer
-  })(state, action)
+export interface State extends fromRoot.State {
+  companies: CompaniesState;
 }
 
+export const reducers: ActionReducerMap<CompaniesState> = {
+  companies: fromCompanies.reducer
+};
+// /** Provide reducers with AoT-compilation compliance */
+// export function reducers(state: CompaniesState | undefined, action: Action) {
+//   return combineReducers({
+//     companies: fromCompanies.reducer
+//   })(state, action)
+// }
 
 /**
  * The createFeatureSelector function selects a piece of state from the root of the state object.
@@ -25,9 +32,20 @@ export const getCompaniesEntitiesState = createSelector(
   state => state.companies
 );
 
+// export const getBookEntities = createSelector(getBookEntitiesState, fromBooks.getBookEntities)
+// export const getBookIds = createSelector(getBookEntitiesState, fromBooks.getBookIds);
+
+// export const getAllBooks = createSelector(
+//   getBookEntities,
+//   getBookIds,
+//   (entities, ids: string[]) => {
+//     return ids.map(id => entities[id]);
+//   }
+// );
+
 export const {
   selectAll: getAllCompanies,
-} = fromCompanies.companiesAdapter.getSelectors(getCompaniesEntitiesState);
+} = fromCompanies.adapter.getSelectors(getCompaniesEntitiesState);
 
 export const getCompanyById = (id: number) => createSelector(
   getCompaniesEntitiesState,

@@ -4,7 +4,7 @@ import * as fromCompanies from './index';
 import { select, Store } from '@ngrx/store';
 
 import { Company } from '../model/company.model';
-import {create, load, remove, update} from './company.actions';
+import { Load, Create, Update, Remove } from './company.actions';
 
 @Injectable()
 export class CompanyStoreFacade {
@@ -16,19 +16,19 @@ export class CompanyStoreFacade {
   constructor(private store: Store<fromRoot.State>) { }
 
   loadCompany(id: number) {
-    this.store.dispatch(load({id}));
+    this.store.dispatch(new Load({id}));
   }
 
   createCompany(company: Company) {
-    this.store.dispatch(create({company}));
+    this.store.dispatch(new Create({company}));
   }
 
   updateCompany(company: Company) {
-    this.store.dispatch(update({company}));
+    this.store.dispatch(new Update({company}));
   }
 
   deleteCompany(id: number) {
-    this.store.dispatch(remove({id}));
+    this.store.dispatch(new Remove({id}));
   }
 
   getCompanyById(id: number) {

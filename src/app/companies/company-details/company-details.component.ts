@@ -33,7 +33,7 @@ export class CompanyDetailsComponent implements OnInit, OnDestroy {
 
      this.redirectSub = this.companiesEffects.destroy$.pipe(
       filter( action =>
-        action.id === +this.activatedRoute.snapshot.params.companyId
+        action.payload.id === +this.activatedRoute.snapshot.params.companyId
       )
     ).subscribe(_ => this.router.navigate(['/companies']));
 

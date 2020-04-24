@@ -32,9 +32,9 @@ export class CompanyEditComponent implements OnInit, OnDestroy {
     // listen to update$ side effect, after updating redirect to the contact details view
     this.redirectSub = this.companiesEffects.update$.pipe(
       // make sure that the currently edited contact has been update and not some other contact (emitted by sockets)
-      filter( action => action.company.id === +this.activatedRoute.snapshot.params.companyId)
+      filter( action => action.payload.company.id === +this.activatedRoute.snapshot.params.companyId)
     ).subscribe(
-      action => this.router.navigate(['/companies', action.company.id])
+      action => this.router.navigate(['/companies', action.payload.company.id])
     );
 
     this.activatedRoute.params.subscribe(params => {
