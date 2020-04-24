@@ -1,7 +1,10 @@
 import { Action } from '@ngrx/store';
 
-export const ERROR_EFFECT = '[Error] Error Effect';
+export enum AppActions {
+  ERROR_EFFECT = '[Error] Error Effect'
+}
 
 export class ErrorEffect implements Action {
-  readonly type = ERROR_EFFECT;
+  readonly type = AppActions.ERROR_EFFECT;
+  constructor(public payload: {error: string}) {}
 }

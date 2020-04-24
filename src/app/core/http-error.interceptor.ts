@@ -11,7 +11,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store';
-import { errorEffect } from '../store/ui-actions';
+import { ErrorEffect } from '../store/app.actions';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -38,7 +38,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         //   return throwError(errorMessage);
         // })
         catchError((error: HttpErrorResponse) => {
-          this.store.dispatch(errorEffect(error.error));
+          this.store.dispatch(new ErrorEffect(error.error));
           return throwError(error);
         })
       );

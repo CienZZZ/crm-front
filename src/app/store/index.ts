@@ -8,6 +8,7 @@ import * as fromContacts from '../contacts/store/contact.reducer';
 // import * as fromActivities from '../activities/store/activity.reducer';
 
 export interface State {
+  error: any;
   // ui: fromUi.UiState;
   // more state here
   // auth: fromAuth.State;
@@ -19,6 +20,7 @@ export interface State {
 }
 
 export const reducers: ActionReducerMap<State> = {
+  error: undefined
   // auth: fromAuth.reducer
   // auth: fromAuth.authReducer,
   // companies: fromCompanies.companyReducer,
@@ -52,4 +54,4 @@ export const metaReducers: MetaReducer<State>[] = !environment.production
 
 // export const getCurrentTitle = createSelector(getUiState, fromUi.getCurrentTitle);
 
-// export const getError = createSelector(getUiState, fromUi.getError);
+export const getError = (state: State) => state ? state.error : null;
