@@ -1,27 +1,26 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { CompanyStoreFacade } from '../store/company.store-facade';
-import { Router } from '@angular/router';
-import { Company } from '../model/company.model';
+// import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+// import { Router } from '@angular/router';
+// import { Company } from '../model/company.model';
 
-@Component({
-  selector: 'app-company-new',
-  templateUrl: './company-new.component.html',
-  styleUrls: ['./company-new.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class CompanyNewComponent implements OnInit, OnDestroy {
+// @Component({
+//   selector: 'app-company-new',
+//   templateUrl: './company-new.component.html',
+//   styleUrls: ['./company-new.component.css'],
+//   changeDetection: ChangeDetectionStrategy.OnPush
+// })
+// export class CompanyNewComponent implements OnInit, OnDestroy {
 
-  constructor(
-    private companiesFacade: CompanyStoreFacade,
-    private router: Router
-  ) {}
+//   constructor(
+//     // private companiesFacade: CompanyStoreFacade,
+//     private router: Router
+//   ) {}
 
-  ngOnInit() {}
+//   ngOnInit() {}
 
-  ngOnDestroy() {}
+//   ngOnDestroy() {}
 
-  submitted(company: Company) {
-    this.companiesFacade.createCompany(company);
-    this.router.navigate(['/companies']);
-  }
-}
+//   submitted(company: Company) {
+//     // this.companiesFacade.createCompany(company);
+//     this.router.navigate(['/companies']);
+//   }
+// }

@@ -1,16 +1,24 @@
-import { Company } from '../model/company.model';
+import { Company } from '../../companies/model/company.model';
 import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
-import {createReducer, on} from '@ngrx/store';
-import { CompanyActionTypes, CompanyActions } from './company.actions';
+import {
+  CompanyActions,
+  LOAD_ALL_COMPANY_SUCCESS,
+  LOAD_COMPANY_SUCCESS,
+  CREATE_COMPANY_SUCCESS,
+  UPDATE_COMPANY_SUCCESS,
+  REMOVE_COMPANY_SUCCESS,
+  SELECT_COMPANY } from './company.actions';
 
 export interface State extends EntityState<Company> {
   // additional props here
+  selectedCompanyId: number;
 }
 // This adapter will allow is to manipulate contacts (mostly CRUD operations)
-export const adapter: EntityAdapter<Company> = createEntityAdapter<Company>({
-  selectId: (company: Company) => company.id,
-  sortComparer: false
-});
+// export const adapter: EntityAdapter<Company> = createEntityAdapter<Company>({
+//   selectId: (company: Company) => company.id,
+//   sortComparer: false
+// });
+export const adapter: EntityAdapter<Company> = createEntityAdapter();
 
 // -----------------------------------------
 // The shape of EntityState
@@ -23,32 +31,35 @@ export const adapter: EntityAdapter<Company> = createEntityAdapter<Company>({
 // -> ids arrays allow us to sort data easily
 // -> entities map allows us to access the data quickly without iterating/filtering though an array of objects
 
-export const INIT_STATE: State = adapter.getInitialState({
+export const initialState: State = adapter.getInitialState({
   // additional props default values here
+  selectedCompanyId: null
 });
 
 export function reducer(
-  state = INIT_STATE,
+  state: State = initialState,
   action: CompanyActions
 ) {
   switch (action.type) {
-    case CompanyActionTypes.LOAD_ALL_SUCCESS:
-      return adapter.setAll(action.payload.companies, state);
-    case CompanyActionTypes.LOAD_SUCCESS:
-      return adapter.upsertOne(action.payload.company, state);
-    case CompanyActionTypes.CREATE_SUCCESS:
-      return adapter.addOne(action.payload.company, state);
-    case CompanyActionTypes.UPDATE_SUCCESS:
-      return adapter.updateOne({id: action.payload.company.id , changes: action.payload.company}, state);
-    case CompanyActionTypes.REMOVE_SUCCESS:
+    case LOAD_ALL_COMPANY_SUCCESS:
+      return adapter.setAll(action.payload, state);
+    case LOAD_COMPANY_SUCCESS:
+      return adapter.upsertOne(action.payload, state);
+    case CREATE_COMPANY_SUCCESS:
+      return adapter.addOne(action.payload, state);
+    case UPDATE_COMPANY_SUCCESS:
+      return adapter.updateOne({id: action.payload.id , changes: action.payload}, state);
+    case REMOVE_COMPANY_SUCCESS:
       return adapter.removeOne(action.payload.id, state);
+    case SELECT_COMPANY:
+      return { ...state, selectedCompanyId: action.payload.id};
     default: {
       return state;
     }
   }
 }
 
-export const getCompanyById = (id: number) => (state: State) => state.entities[id];
+export const getSelectedCompanyId = (state: State) => state.selectedCompanyId;
 
 // export const reducer = createReducer<State>(
 //   INIT_STATE,

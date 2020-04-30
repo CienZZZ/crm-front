@@ -1,34 +1,34 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Company } from '../../model/company.model';
+// import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+// import { Company } from '../../model/company.model';
 
-@Component({
-  selector: 'app-company-list',
-  templateUrl: './company-list.component.html',
-  styleUrls: ['./company-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class CompanyListComponent implements OnInit {
+// @Component({
+//   selector: 'app-company-list',
+//   templateUrl: './company-list.component.html',
+//   styleUrls: ['./company-list.component.css'],
+//   changeDetection: ChangeDetectionStrategy.OnPush
+// })
+// export class CompanyListComponent implements OnInit {
 
-  @Input() companies: Company[];
-  @Output() edit = new EventEmitter<Company>();
-  @Output() show = new EventEmitter<Company>();
-  @Output() remove = new EventEmitter<Company>();
+//   @Input() companies: Company[];
+//   @Output() edit = new EventEmitter<Company>();
+//   @Output() show = new EventEmitter<Company>();
+//   @Output() remove = new EventEmitter<Company>();
 
-  companiesTrackByFn = (index: number, company: Company) => company.id;
+//   companiesTrackByFn = (index: number, company: Company) => company.id;
 
-  constructor() {}
+//   constructor() {}
 
-  ngOnInit() {}
+//   ngOnInit() {}
 
-  showDetails(company: Company) {
-    this.show.emit(company);
-  }
+//   showDetails(company: Company) {
+//     this.show.emit(company);
+//   }
 
-  editCompany(company: Company) {
-    this.edit.emit(company);
-  }
+//   editCompany(company: Company) {
+//     this.edit.emit(company);
+//   }
 
-  deleteCompany(company: Company) {
-    this.remove.emit(company);
-  }
-}
+//   deleteCompany(company: Company) {
+//     this.remove.emit(company);
+//   }
+// }

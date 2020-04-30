@@ -1,0 +1,25 @@
+<form (submit)="submit()"  class="form" [formGroup]="form">
+  <div class="form-group">
+    <label for="name-input">Name:</label>
+    <input id="name-input" type="text" class="form-control" formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label for="full_name-input">Full Name:</label>
+    <input id="full_name-input" type="text" class="form-control" formControlName="full_name">
+  </div>
+
+  <div class="form-group">
+    <label for="created_by-input">Created By:</label>
+    <input id="created_by-input" type="text" class="form-control" formControlName="created_by">
+  </div>
+
+  <div class="form-group">
+    <button
+            type="submit"
+            [disabled]="!form.valid"
+            class="btn btn-success float-right">
+      Submit
+    </button>
+  </div>
+</form>

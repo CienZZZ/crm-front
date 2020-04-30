@@ -1,16 +1,16 @@
 import * as fromCompanies from './company.reducer';
-import * as fromRoot from '../../reducers';
 import {Action, combineReducers, createFeatureSelector, createSelector, ActionReducerMap} from '@ngrx/store';
+import { AppState } from '../app.interfaces';
 
 export interface CompaniesState {
   companies: fromCompanies.State;
 }
 
-export interface State extends fromRoot.State {
+export interface State extends AppState {
   companies: CompaniesState;
 }
 
-export const reducers: ActionReducerMap<CompaniesState> = {
+export const reducers = {
   companies: fromCompanies.reducer
 };
 // /** Provide reducers with AoT-compilation compliance */
@@ -32,6 +32,24 @@ export const getCompaniesEntitiesState = createSelector(
   state => state.companies
 );
 
+export const {
+  selectAll: getAllCompanies,
+  selectEntities: getCompanyEntities,
+  selectIds: getCompanyIds,
+  selectTotal: getCompaniesTotal
+} = fromCompanies.adapter.getSelectors(getCompaniesEntitiesState);
+
+export const getSelectedCompanyId = createSelector(
+  getCompaniesEntitiesState,
+  fromCompanies.getSelectedCompanyId
+);
+
+export const getSelectedCompany = createSelector(
+  getCompanyEntities,
+  getSelectedCompanyId,
+  (entities, selectedCompanyId) => selectedCompanyId && entities[selectedCompanyId]
+);
+
 // export const getBookEntities = createSelector(getBookEntitiesState, fromBooks.getBookEntities)
 // export const getBookIds = createSelector(getBookEntitiesState, fromBooks.getBookIds);
 
@@ -43,11 +61,11 @@ export const getCompaniesEntitiesState = createSelector(
 //   }
 // );
 
-export const {
-  selectAll: getAllCompanies,
-} = fromCompanies.adapter.getSelectors(getCompaniesEntitiesState);
+// export const {
+//   selectAll: getAllCompanies,
+// } = fromCompanies.adapter.getSelectors(getCompaniesEntitiesState);
 
-export const getCompanyById = (id: number) => createSelector(
-  getCompaniesEntitiesState,
-  fromCompanies.getCompanyById(id)
-);
+// export const getCompanyById = (id: number) => createSelector(
+//   getCompaniesEntitiesState,
+//   fromCompanies.getCompanyById(id)
+// );

@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // import { AlertComponent } from './alert/alert.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ToastComponent } from './toast/toast.component';
 // import { DropdownDirective } from './dropdown.directive';
 // import { PlaceholderDirective } from './placeholder/placeholder.directive';
 
@@ -14,6 +15,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     LoadingSpinnerComponent,
     // DropdownDirective,
     // PlaceholderDirective
+    ToastComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     CommonModule,
     FullCalendarModule,
     // PlaceholderDirective,
-    NgbModule
+    NgbModule,
+    ToastComponent
   ]
 })
 export class SharedModule {}

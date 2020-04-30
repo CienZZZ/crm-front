@@ -10,14 +10,16 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../store';
-import { ErrorEffect } from '../store/app.actions';
+// import * as fromRoot from '../state/';
+// import { ErrorEffect } from '../store/app.actions';
+import { AppState } from '../state/app.interfaces';
+import { HttpError } from '../state/error/error.actions';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
 
   constructor(
-    private store: Store<fromRoot.State>
+    private store: Store<AppState>
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -38,7 +40,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         //   return throwError(errorMessage);
         // })
         catchError((error: HttpErrorResponse) => {
-          this.store.dispatch(new ErrorEffect(error.error));
+          this.store.dispatch(new HttpError(error.error));
           return throwError(error);
         })
       );

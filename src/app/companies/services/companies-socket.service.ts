@@ -9,7 +9,7 @@ export class CompaniesSocketService extends Socket {
 
   liveCreated$ = this.fromEvent<Company>(CompanyEventTypes.LIVE_CREATED);
   liveUpdated$ = this.fromEvent<Company>(CompanyEventTypes.LIVE_UPDATED);
-  liveDeleted$ = this.fromEvent<number>(CompanyEventTypes.LIVE_DELETED);
+  liveDeleted$ = this.fromEvent<Company>(CompanyEventTypes.LIVE_DELETED);
 
   constructor() {
     super({
