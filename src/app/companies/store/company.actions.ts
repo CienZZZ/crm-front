@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { Company } from '../../companies/model/company.model';
-import { createActionType } from '../shared/utils';
+import { Company } from '../model/company.model';
+import { createActionType } from '../../state/shared/utils';
 
 export const LOAD_ALL_COMPANY = createActionType('LOAD_ALL_COMPANY');
 export const LOAD_ALL_COMPANY_SUCCESS = createActionType('LOAD_ALL_COMPANY_SUCCESS');

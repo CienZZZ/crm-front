@@ -10,8 +10,8 @@ import {
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CompaniesService } from '../../companies/services/companies.service';
-import { CompaniesSocketService } from '../../companies/services/companies-socket.service';
+import { CompaniesService } from '../services/companies.service';
+import { CompaniesSocketService } from '../services/companies-socket.service';
 import {
   LOAD_COMPANY,
   CreateCompany,
@@ -30,7 +30,7 @@ import {
   UPDATE_COMPANY,
   UpdateCompanySuccess,
   UPDATE_COMPANY_SUCCESS} from './company.actions';
-import { ToastOpen } from '../toast/toast.actions';
+import { ToastOpen } from '../../state/toast/toast.actions';
 
 /**
  * Effects file is for isolating and managing side effects of the application in one place

@@ -1,4 +1,4 @@
-import { Company } from '../../companies/model/company.model';
+import { Company } from '../model/company.model';
 import {EntityState, createEntityAdapter, EntityAdapter} from '@ngrx/entity';
 import {
   CompanyActions,

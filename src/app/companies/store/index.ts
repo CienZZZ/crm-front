@@ -1,6 +1,6 @@
 import * as fromCompanies from './company.reducer';
 import {Action, combineReducers, createFeatureSelector, createSelector, ActionReducerMap} from '@ngrx/store';
-import { AppState } from '../app.interfaces';
+import { AppState } from '../../state/app.interfaces';
 
 export interface CompaniesState {
   companies: fromCompanies.State;

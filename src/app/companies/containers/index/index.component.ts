@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Company } from '../../model/company.model';
 import { Store, select } from '@ngrx/store';
-import { CompaniesState, getAllCompanies } from '../../../state/companies';
-import { LoadAllCompany, CreateCompany, RemoveCompany } from 'src/app/state/companies/company.actions';
+import { CompaniesState, getAllCompanies } from '../../store';
+import { LoadAllCompany, CreateCompany, RemoveCompany } from 'src/app/companies/store/company.actions';
 
 @Component({
   selector: 'app-index',

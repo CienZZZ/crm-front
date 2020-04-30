@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { Company } from '../../model/company.model';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { CompaniesState, getCompanyEntities, getSelectedCompany } from 'src/app/state/companies';
+import { CompaniesState, getCompanyEntities, getSelectedCompany } from 'src/app/companies/store';
 import { tap, first, switchMap, take } from 'rxjs/operators';
-import { SelectCompany, UpdateCompany, LoadCompany } from 'src/app/state/companies/company.actions';
+import { SelectCompany, UpdateCompany, LoadCompany } from 'src/app/companies/store/company.actions';
 // import { ToastComponent } from 'src/app/shared/toast/toast.component';
 
 @Component({
