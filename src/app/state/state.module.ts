@@ -9,9 +9,9 @@ import { CustomSerializer } from './shared/utils';
 
 @NgModule({
   imports: [
-    StoreModule.forRoot(appReducer, {metaReducers: appMetaReducers}),
+    StoreModule.forRoot(appReducer, {metaReducers: appMetaReducers}), /* Initialise the Central Store with Application's main reducer*/
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([]), /* Start monitoring app's side effects */
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: []

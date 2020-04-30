@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { Company } from '../../model/company.model';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { CompaniesState, getCompanyEntities, getSelectedCompany } from 'src/app/companies/store';
-import { tap, first, switchMap, take } from 'rxjs/operators';
+import { CompaniesState, getCompanyEntities, getSelectedCompany, getCompaniesTotal } from 'src/app/companies/store';
+import { tap, first, switchMap, take, single, map } from 'rxjs/operators';
 import { SelectCompany, UpdateCompany, LoadCompany } from 'src/app/companies/store/company.actions';
 // import { ToastComponent } from 'src/app/shared/toast/toast.component';
 
@@ -24,29 +24,31 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.company = this.activatedRoute.paramMap.pipe(
-    //   tap(paramMap => {
-    //     const id = +paramMap['id']; // TODO: czy to bedzie ok? było paramMap.get , ale byl blad
-    //     this.store.dispatch(new SelectCompany({ id: id }));
-    //     this.hasCompanyInStore(id).subscribe(exists => {
-    //       if (!exists) {
-    //         this.store.dispatch(new LoadCompany({ id: id }));
-    //       }
-    //     });
-    //   }),
-    //   switchMap(() => this.store.pipe(select(getSelectedCompany)))
-    // );
+    this.company = this.activatedRoute.paramMap.pipe(
+      tap(paramMap => {
+        const id = +paramMap.get('id');
+        this.store.dispatch(new SelectCompany({ id: id }));
+        this.hasCompanyInStore().subscribe(exists => {
+          if (!exists) {
+            this.store.dispatch(new LoadCompany({ id: id }));
+          }
+        });
+      }),
+      switchMap(() => this.store.pipe(select(getSelectedCompany)))
+    );
   }
 
-  // hasCompanyInStore(id: number): Observable<boolean> {
-  //   return this.store
-  //     .select(getCompanyEntities)
-  //     .pipe(
-  //       first(companies => companies !== null, companies => companies[id] !== undefined) // TODO: co to za blad first???
-  //       // take(1),
-  //       // switchMap(companies => companies !== null, companies => companies[id] !== undefined)
-  //     );
-  // }
+  hasCompanyInStore(): Observable<boolean> {
+    return this.store
+      .select(getCompaniesTotal)
+      .pipe(
+        first(),
+        map(total => total > 0)
+        // first(companies => companies !== null, companies => companies[id] !== undefined) // TODO: co to za blad first???
+        // take(1),
+        // switchMap(companies => companies !== null, companies => companies[id] !== undefined)
+      );
+  }
 
   companyChange(company: Company) {
     this.store.dispatch(new UpdateCompany(company));

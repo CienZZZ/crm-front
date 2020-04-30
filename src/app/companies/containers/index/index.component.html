@@ -3,14 +3,12 @@
     <h1>Company List </h1>
   </div>
   <div class="col-md-3 align-self-center">
-    <!-- <button (click)="newCompany()" class="btn btn-outline-success mb-1 btn-sm">NEW COMPANY</button> -->
+    <button (click)="createNewCompany()" class="btn btn-outline-success mb-1 btn-sm">NEW COMPANY</button>
   </div>
 </div>
 
-<app-companies
-  [companies]="companies | async"
+<app-companies [companies]="companies | async" (delete)="delete($event)"></app-companies>
 
-></app-companies>
 
 <!-- (show)="showCompany($event)"
   (remove)="deleteCompany($event)"

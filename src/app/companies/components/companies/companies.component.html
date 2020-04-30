@@ -16,12 +16,12 @@
     <td>{{company.created_by}}</td>
     <td>
       <span class="float-right">
-        <!-- <button (click)="showDetails(c)" class="btn btn-outline-primary mb-1 btn-sm">
+        <!-- <button (click)="show.emit(company)" class="btn btn-outline-primary mb-1 btn-sm">
           DETAILS
-        </button>
-        <button (click)="editCompany(c)" class="btn btn-outline-primary mb-1 btn-sm">
-          EDIT
         </button> -->
+        <button [routerLink]="['/companies', company.id, 'edit']" class="btn btn-outline-primary mb-1 btn-sm">
+          EDIT
+        </button>
         <button (click)="delete.emit(company)" class="btn btn-outline-danger mb-1 btn-sm">
           DELETE
         </button>

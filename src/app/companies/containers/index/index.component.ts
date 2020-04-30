@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
     this.store.dispatch(new LoadAllCompany());
   }
 
-  create() {
+  createNewCompany() {
     // this.store.dispatch(new CreateCompany()); // TODO: stworzyc akcje i dialog do tworzenia nowej firmy
   }
 

@@ -24,10 +24,6 @@ import { HeaderComponent } from './header/header.component';
     NgbModule,
     SocketIoModule,
     StateModule.forRoot(),
-    // StoreModule.forRoot(reducers), /* Initialise the Central Store with Application's main reducer*/
-    // StoreRouterConnectingModule.forRoot(),
-    // EffectsModule.forRoot([]), /* Start monitoring app's side effects */
-    // !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 40 }) : [],
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     CoreModule,
     SharedModule
