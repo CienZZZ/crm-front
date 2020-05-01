@@ -1,4 +1,4 @@
-<form (submit)="submit()"  class="form" [formGroup]="form">
+<form class="form" [formGroup]="form">
   <div class="form-group">
     <label for="name-input">Name:</label>
     <input id="name-input" type="text" class="form-control" formControlName="name">
@@ -14,12 +14,12 @@
     <input id="created_by-input" type="text" class="form-control" formControlName="created_by">
   </div>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <button
             type="submit"
             [disabled]="!form.valid"
             class="btn btn-success float-right">
       Submit
     </button>
-  </div>
+  </div> -->
 </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Company } from '../../model/company.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-company',
@@ -17,7 +18,7 @@ export class EditCompanyComponent implements OnInit, OnChanges {
     created_by: ''
   };
 
-  @Output() save = new EventEmitter<Company>();
+  @Output() companyChange = new EventEmitter<Company>();
 
   form: FormGroup;
 
@@ -25,11 +26,28 @@ export class EditCompanyComponent implements OnInit, OnChanges {
     this.createForm();
   }
 
-  ngOnInit() {}   // TODO: trzeba to porownac z przykladem
+  ngOnInit() {
+    this.form.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged((prev: Company, next: Company) => prev === next)
+      )
+      .subscribe(value => {
+        if (!this.form.valid) {
+          return;
+        }
+        this.companyChange.emit({
+          ...this.company,
+          ...value
+        });
+      });
+  }
 
   ngOnChanges() {
     if (this.company) {
-      this.form.patchValue({...this.company});
+      this.form.patchValue(this.company, {
+        emitEvent: false
+      });
     }
   }
 
@@ -42,9 +60,9 @@ export class EditCompanyComponent implements OnInit, OnChanges {
     });
   }
 
-  submit() {
-    if (this.form.valid) {
-      this.save.emit(this.form.value);
-    }
-  }
+  // submit() {
+  //   if (this.form.valid) {
+  //     this.save.emit(this.form.value);
+  //   }
+  // }
 }
