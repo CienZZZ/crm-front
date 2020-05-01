@@ -26,6 +26,9 @@ export class IndexComponent implements OnInit {
   }
 
   delete(company: Company) {
-    this.store.dispatch(new RemoveCompany(company));
+    const r  = confirm('Are you sure ?');
+    if (r) {
+      this.store.dispatch(new RemoveCompany(company));
+    }
   }
 }

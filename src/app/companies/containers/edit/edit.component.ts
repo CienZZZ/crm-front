@@ -44,9 +44,6 @@ export class EditComponent implements OnInit {
       .pipe(
         first(),
         map(total => total > 0)
-        // first(companies => companies !== null, companies => companies[id] !== undefined) // TODO: co to za blad first???
-        // take(1),
-        // switchMap(companies => companies !== null, companies => companies[id] !== undefined)
       );
   }
 
