@@ -8,6 +8,8 @@ export const LOAD_COMPANY = createActionType('LOAD_COMPANY');
 export const LOAD_COMPANY_SUCCESS = createActionType('LOAD_COMPANY_SUCCESS');
 export const CREATE_COMPANY = createActionType('CREATE_COMPANY');
 export const CREATE_COMPANY_SUCCESS = createActionType('CREATE_COMPANY_SUCCESS');
+export const CREATE_COMPANY_DIALOG_OPEN = createActionType('CREATE_COMPANY_DIALOG_OPEN');
+export const CREATE_COMPANY_DIALOG_CLOSE = createActionType('CREATE_COMPANY_DIALOG_CLOSE');
 export const UPDATE_COMPANY = createActionType('UPDATE_COMPANY');
 export const UPDATE_COMPANY_SUCCESS = createActionType('UPDATE_COMPANY_SUCCESS');
 export const REMOVE_COMPANY = createActionType('REMOVE_COMPANY');
@@ -43,6 +45,14 @@ export class CreateCompanySuccess implements Action {
   constructor(public payload: Company) {}
 }
 
+export class CreateCompanyDialogOpen implements Action {
+  readonly type = CREATE_COMPANY_DIALOG_OPEN;
+}
+
+export class CreateCompanyDialogClose implements Action {
+  readonly type = CREATE_COMPANY_DIALOG_CLOSE;
+}
+
 export class UpdateCompany implements Action {
   readonly type = UPDATE_COMPANY;
   constructor(public payload: Partial<Company>) {}
@@ -75,6 +85,8 @@ export type CompanyActions =
   | LoadCompanySuccess
   | CreateCompany
   | CreateCompanySuccess
+  | CreateCompanyDialogOpen
+  | CreateCompanyDialogClose
   | UpdateCompany
   | UpdateCompanySuccess
   | RemoveCompany

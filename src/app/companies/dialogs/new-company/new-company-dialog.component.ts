@@ -1,0 +1,67 @@
+import { Component, Input, HostListener } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Company } from '../../model/company.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { CompaniesState } from '../../store/index';
+import { CreateCompany, CreateCompanyDialogClose } from '../../store/company.actions';
+
+@Component({
+  selector: 'app-new-company-dialog',
+  templateUrl: './new-company-dialog.component.html'
+})
+export class NewCompanyDialogComponent {
+
+  // @Input() title;
+  @Input() company: Company = {
+    id: undefined,
+    name: '',
+    full_name: '',
+    created_by: ''
+  };
+
+  form: FormGroup;
+
+  constructor(
+    public activeModal: NgbActiveModal,
+    public formBuilder: FormBuilder,
+    public store: Store<CompaniesState>
+  ) {
+    this.createForm();
+  }
+
+  saveCompany() {
+
+  }
+
+  // save() {
+  //   const company = this.form.value as Company;
+  //   this.store.dispatch(new CreateCompany(company));
+  // }
+
+  close() {
+    this.store.dispatch(new CreateCompanyDialogClose());
+  }
+
+  submit() {
+    if (this.form.valid) {
+      // this.save.emit(this.form.value);
+      const company = this.form.value as Company;
+      this.store.dispatch(new CreateCompany(company));
+    }
+  }
+
+  @HostListener('keydown.esc')
+  onEsc() {
+    this.activeModal.dismiss();
+  }
+
+  createForm() {
+    this.form = this.formBuilder.group({
+      id: [this.company.id],
+      name: [this.company.name, Validators.required],
+      full_name: [this.company.full_name],
+      created_by: [this.company.created_by]
+    });
+  }
+}

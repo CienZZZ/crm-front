@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title">New Company !</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form" [formGroup]="form">
+    <div class="form-group">
+      <label for="name-input">Name:</label>
+      <input id="name-input" type="text" class="form-control" formControlName="name">
+    </div>
+
+    <div class="form-group">
+      <label for="full_name-input">Full Name:</label>
+      <input id="full_name-input" type="text" class="form-control" formControlName="full_name">
+    </div>
+
+    <div class="form-group">
+      <label for="created_by-input">Created By:</label>
+      <input id="created_by-input" type="text" class="form-control" formControlName="created_by">
+    </div>
+
+    <div class="form-group">
+      <button
+              type="submit"
+              [disabled]="!form.valid"
+              class="btn btn-success float-right"
+              (click)="submit()">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

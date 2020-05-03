@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CompanyEffects } from './store/company.effects';
 import { reducers } from './store';
+import { NewCompanyDialogComponent } from './dialogs/new-company/new-company-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { reducers } from './store';
     CompanyComponent,
     CompanyDetailComponent,
     EditComponent,
-    EditCompanyComponent
+    EditCompanyComponent,
+    NewCompanyDialogComponent
   ],
   imports: [
     RouterModule,
@@ -34,7 +36,8 @@ import { reducers } from './store';
     StoreModule.forFeature('companies', reducers),
     EffectsModule.forFeature([CompanyEffects])
   ],
-  providers: [CompaniesService , CompaniesSocketService] //, CompanyStoreFacade]
+  providers: [CompaniesService , CompaniesSocketService], // CompanyStoreFacade],
+  entryComponents: [NewCompanyDialogComponent]
 })
 
 export class CompaniesModule {

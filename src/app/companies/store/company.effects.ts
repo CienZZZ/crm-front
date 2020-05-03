@@ -29,8 +29,14 @@ import {
   UpdateCompany,
   UPDATE_COMPANY,
   UpdateCompanySuccess,
-  UPDATE_COMPANY_SUCCESS} from './company.actions';
+  UPDATE_COMPANY_SUCCESS,
+  CreateCompanyDialogOpen,
+  CREATE_COMPANY_DIALOG_OPEN,
+  CreateCompanyDialogClose,
+  CREATE_COMPANY_DIALOG_CLOSE} from './company.actions';
 import { ToastOpen } from '../../state/toast/toast.actions';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NewCompanyDialogComponent } from '../dialogs/new-company/new-company-dialog.component';
 
 /**
  * Effects file is for isolating and managing side effects of the application in one place
@@ -71,10 +77,29 @@ export class CompanyEffects {
   @Effect()
   createCompanySuccess: Observable<Action> = this.actions.pipe(
     ofType<CreateCompanySuccess>(CREATE_COMPANY_SUCCESS),
-    tap(() => new ToastOpen({
-      message: 'Company created!',
-      options: { classname: 'bg-success text-light', delay: 5000 }
-    }))
+    // tap(() => new ToastOpen({
+    //   message: 'Company created!',
+    //   options: { classname: 'bg-success text-light', delay: 5000 }
+    // }))
+    mergeMap(() => [
+      new ToastOpen({
+        message: 'Company created!',
+        options: { classname: 'bg-success text-light', delay: 5000 }
+      }),
+      new CreateCompanyDialogClose()
+    ])
+  );
+
+  @Effect({dispatch: false})
+  createCompanyDialogOpen: Observable<any> = this.actions.pipe(
+    ofType<CreateCompanyDialogOpen>(CREATE_COMPANY_DIALOG_OPEN),
+    tap(() => this.modalService.open(NewCompanyDialogComponent))
+  );
+
+  @Effect({dispatch: false})
+  createCompanyDialogClose: Observable<any> = this.actions.pipe(
+    ofType<CreateCompanyDialogClose>(CREATE_COMPANY_DIALOG_CLOSE),
+    tap(() => this.modalService.dismissAll())
   );
 
   @Effect()
@@ -187,7 +212,8 @@ export class CompanyEffects {
   constructor(
     private actions: Actions,
     private companiesService: CompaniesService,
-    private companiesSocket: CompaniesSocketService
+    private companiesSocket: CompaniesSocketService,
+    private modalService: NgbModal
   ) {}
 
 }

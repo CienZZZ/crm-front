@@ -7,11 +7,14 @@ import {
   CREATE_COMPANY_SUCCESS,
   UPDATE_COMPANY_SUCCESS,
   REMOVE_COMPANY_SUCCESS,
-  SELECT_COMPANY } from './company.actions';
+  SELECT_COMPANY,
+  CREATE_COMPANY_DIALOG_OPEN,
+  CREATE_COMPANY_DIALOG_CLOSE} from './company.actions';
 
 export interface State extends EntityState<Company> {
   // additional props here
   selectedCompanyId: number;
+  createDialogShow: boolean;
 }
 // This adapter will allow is to manipulate contacts (mostly CRUD operations)
 // export const adapter: EntityAdapter<Company> = createEntityAdapter<Company>({
@@ -33,7 +36,8 @@ export const adapter: EntityAdapter<Company> = createEntityAdapter();
 
 export const initialState: State = adapter.getInitialState({
   // additional props default values here
-  selectedCompanyId: null
+  selectedCompanyId: null,
+  createDialogShow: false
 });
 
 export function reducer(
@@ -53,6 +57,10 @@ export function reducer(
       return adapter.removeOne(action.payload.id, state);
     case SELECT_COMPANY:
       return { ...state, selectedCompanyId: action.payload.id};
+    case CREATE_COMPANY_DIALOG_OPEN:
+      return { ...state, createDialogShow: false};
+    case CREATE_COMPANY_DIALOG_CLOSE:
+      return { ...state, createDialogShow: true};
     default: {
       return state;
     }
