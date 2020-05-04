@@ -12,7 +12,6 @@ import { CreateCompany, CreateCompanyDialogClose } from '../../store/company.act
 })
 export class NewCompanyDialogComponent {
 
-  // @Input() title;
   @Input() company: Company = {
     id: undefined,
     name: '',
@@ -30,15 +29,6 @@ export class NewCompanyDialogComponent {
     this.createForm();
   }
 
-  saveCompany() {
-
-  }
-
-  // save() {
-  //   const company = this.form.value as Company;
-  //   this.store.dispatch(new CreateCompany(company));
-  // }
-
   close() {
     this.store.dispatch(new CreateCompanyDialogClose());
   }
@@ -53,7 +43,8 @@ export class NewCompanyDialogComponent {
 
   @HostListener('keydown.esc')
   onEsc() {
-    this.activeModal.dismiss();
+    // this.activeModal.dismiss();
+    this.store.dispatch(new CreateCompanyDialogClose());
   }
 
   createForm() {

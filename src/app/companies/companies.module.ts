@@ -36,7 +36,7 @@ import { NewCompanyDialogComponent } from './dialogs/new-company/new-company-dia
     StoreModule.forFeature('companies', reducers),
     EffectsModule.forFeature([CompanyEffects])
   ],
-  providers: [CompaniesService , CompaniesSocketService], // CompanyStoreFacade],
+  providers: [CompaniesService , CompaniesSocketService],
   entryComponents: [NewCompanyDialogComponent]
 })
 

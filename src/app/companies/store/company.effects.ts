@@ -77,10 +77,6 @@ export class CompanyEffects {
   @Effect()
   createCompanySuccess: Observable<Action> = this.actions.pipe(
     ofType<CreateCompanySuccess>(CREATE_COMPANY_SUCCESS),
-    // tap(() => new ToastOpen({
-    //   message: 'Company created!',
-    //   options: { classname: 'bg-success text-light', delay: 5000 }
-    // }))
     mergeMap(() => [
       new ToastOpen({
         message: 'Company created!',
