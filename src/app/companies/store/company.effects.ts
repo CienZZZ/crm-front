@@ -35,7 +35,7 @@ import {
   REMOVE_COMPANY_SUCCESS,
   LOAD_COMPANY_SUCCESS,
   LOAD_ALL_COMPANY_SUCCESS} from './company.actions';
-import { ToastOpen } from '../../shared/toast/store/toast.actions';
+import { ToastOpen } from '../../state/shared/toast-store/toast.actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NewCompanyDialogComponent } from '../dialogs/new-company/new-company-dialog.component';
 import { ShowSpinner, HideSpinner } from '../../state/shared/loading-spinner-store/loading-spinner.actions';

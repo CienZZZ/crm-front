@@ -1,4 +1,4 @@
-import { createActionType } from '../../../state/shared/utils';
+import { createActionType } from '../utils';
 import { Action } from '@ngrx/store';
 
 export const TOAST_OPEN = createActionType('TOAST_OPEN');

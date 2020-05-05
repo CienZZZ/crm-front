@@ -4,7 +4,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from '../../environments/environment';
 import { AppState } from './app.interfaces';
 import * as fromSpinner from './shared/loading-spinner-store/loading-spinner.reducer';
-import * as fromToast from '../shared/toast/store/toast.reducer';
+import * as fromToast from './shared/toast-store/toast.reducer';
 // import * as fromModal from '../shared/modal/store/modal.reducer';
 
 export const appReducer: ActionReducerMap<AppState> = {
