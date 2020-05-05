@@ -1,4 +1,4 @@
-import { createActionType } from '../shared/utils';
+import { createActionType } from '../../../state/shared/utils';
 import { Action } from '@ngrx/store';
 
 export const MODAL_OPEN = createActionType('MODAL_OPEN');

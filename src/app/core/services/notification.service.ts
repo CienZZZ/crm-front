@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { ModalService } from './modal/modal.service';
+import { ModalService } from '../../shared/modal/modal.service';
 
 @Injectable({
   providedIn: 'root'

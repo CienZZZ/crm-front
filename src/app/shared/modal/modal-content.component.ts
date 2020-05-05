@@ -23,4 +23,5 @@ export class ModalContentComponent {
   @Input() message;
 
   constructor(public activeModal: NgbActiveModal) {}
+
 }

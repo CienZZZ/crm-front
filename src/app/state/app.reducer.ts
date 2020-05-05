@@ -5,10 +5,12 @@ import { environment } from '../../environments/environment';
 import { AppState } from './app.interfaces';
 // import * as fromSpinner from "./shared/reducers/spinner";
 import * as fromToast from '../shared/toast/store/toast.reducer';
+// import * as fromModal from '../shared/modal/store/modal.reducer';
 
 export const appReducer: ActionReducerMap<AppState> = {
   router: routerReducer,
-  toast: fromToast.reducer
+  toast: fromToast.reducer,
+  // modal: fromModal.reducer
   // spinner: fromSpinner.reducer
 };
 

@@ -9,18 +9,9 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-// import * as fromRoot from '../state/';
-// import { ErrorEffect } from '../store/app.actions';
-import { AppState } from '../state/app.interfaces';
-import { HttpError } from '../state/error/error.actions';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-
-  constructor(
-    private store: Store<AppState>
-  ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request)
@@ -40,7 +31,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         //   return throwError(errorMessage);
         // })
         catchError((error: HttpErrorResponse) => {
-          this.store.dispatch(new HttpError(error.error));
+          // this.store.dispatch(new HttpError(error.error));
+          // this.store.dispatch(new ModalOpen({title: 'Error', message: error.toString()}));
           return throwError(error);
         })
       );

@@ -31,7 +31,8 @@ import {
   CreateCompanyDialogOpen,
   CREATE_COMPANY_DIALOG_OPEN,
   CreateCompanyDialogClose,
-  CREATE_COMPANY_DIALOG_CLOSE} from './company.actions';
+  CREATE_COMPANY_DIALOG_CLOSE,
+  REMOVE_COMPANY_SUCCESS} from './company.actions';
 import { ToastOpen } from '../../shared/toast/store/toast.actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NewCompanyDialogComponent } from '../dialogs/new-company/new-company-dialog.component';
@@ -102,6 +103,16 @@ export class CompanyEffects {
     map(action => action.payload),
     switchMap(company => this.companiesService.destroyCompany(company)),
     map(company => new RemoveCompanySuccess(company))
+  );
+
+  @Effect()
+  removeCompanySuccess: Observable<Action> = this.actions.pipe(
+    ofType<RemoveCompanySuccess>(REMOVE_COMPANY_SUCCESS),
+    map(action => action.payload),
+    map( company => new ToastOpen({
+      message: 'Deleted: ' + company.name,
+      options: {classname: 'bg-danger text-light', delay: 5000}
+    }))
   );
 
   @Effect()

@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { Company } from '../../model/company.model';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { CompaniesState, getSelectedCompany, getCompaniesTotal } from 'src/app/companies/store';
+import { CompaniesState, getSelectedCompany, getCompaniesTotal } from '../../../companies/store';
 import { tap, first, switchMap, map } from 'rxjs/operators';
-import { SelectCompany, UpdateCompany, LoadCompany } from 'src/app/companies/store/company.actions';
+import { SelectCompany, UpdateCompany, LoadCompany } from '../../../companies/store/company.actions';
 
 @Component({
   selector: 'app-edit',

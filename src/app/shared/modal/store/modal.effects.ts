@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
-import { ModalService } from 'src/app/core/services/modal/modal.service';
-import { ModalOpen, MODAL_OPEN } from './modal.actions';
+import { ModalService } from 'src/app/shared/modal/modal.service';
+import { ModalOpen, MODAL_OPEN, ModalClose, MODAL_CLOSE } from './modal.actions';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable()
