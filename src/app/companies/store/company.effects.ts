@@ -32,38 +32,63 @@ import {
   CREATE_COMPANY_DIALOG_OPEN,
   CreateCompanyDialogClose,
   CREATE_COMPANY_DIALOG_CLOSE,
-  REMOVE_COMPANY_SUCCESS} from './company.actions';
+  REMOVE_COMPANY_SUCCESS,
+  LOAD_COMPANY_SUCCESS,
+  LOAD_ALL_COMPANY_SUCCESS} from './company.actions';
 import { ToastOpen } from '../../shared/toast/store/toast.actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NewCompanyDialogComponent } from '../dialogs/new-company/new-company-dialog.component';
+import { ShowSpinner, HideSpinner } from '../../state/shared/loading-spinner-store/loading-spinner.actions';
 
 /**
  * Effects file is for isolating and managing side effects of the application in one place
  * Http requests, Sockets, Routing, LocalStorage, etc
  */
 
-  // type showSpinnerTypes =
-  //    CreateCompany;
+type showSpinnerTypes =
+    | CreateCompany
+    | RemoveCompany
+    | UpdateCompany
+    | LoadCompany
+    | LoadAllCompany;
 
-  // const showSpinnerActions = [
-  //   CREATE_COMPANY
-  // ];
+const showSpinnerActions = [
+    CREATE_COMPANY,
+    REMOVE_COMPANY,
+    UPDATE_COMPANY,
+    LOAD_COMPANY,
+    LOAD_ALL_COMPANY
+  ];
 
-  // type hideSpinnerTypes =
-  //   | CreateCompanySuccess;
+type hideSpinnerTypes =
+    | CreateCompanySuccess
+    | RemoveCompanySuccess
+    | UpdateCompanySuccess
+    | LoadCompanySuccess
+    | LoadAllCompanySuccess;
+
+const hideSpinnerActions = [
+    CREATE_COMPANY_SUCCESS,
+    REMOVE_COMPANY_SUCCESS,
+    UPDATE_COMPANY_SUCCESS,
+    LOAD_COMPANY_SUCCESS,
+    LOAD_ALL_COMPANY_SUCCESS
+  ];
 
 @Injectable()
 export class CompanyEffects {
 
-  // @Effect()
-  // showSpinner: Observable<Action> = this.actions
-  //   .ofType<showSpinnerTypes>(...showSpinnerActions)
-  //   .pipe(map(() => new ShowSpinner()));
+  @Effect()
+  showSpinner: Observable<Action> = this.actions.pipe(
+    ofType<showSpinnerTypes>(...showSpinnerActions),
+    map(() => new ShowSpinner())
+  );
 
-  // @Effect()
-  // hideSpinner: Observable<Action> = this.actions
-  //   .ofType<hideSpinnerTypes>(...hideSpinnerActions)
-  //   .pipe(map(() => new HideSpinner()));
+  @Effect()
+  hideSpinner: Observable<Action> = this.actions.pipe(
+    ofType<hideSpinnerTypes>(...hideSpinnerActions),
+    map(() => new HideSpinner())
+  );
 
   @Effect()
   createCompany: Observable<Action> = this.actions.pipe(
@@ -146,55 +171,6 @@ export class CompanyEffects {
         options: { classname: 'bg-success text-light', delay: 5000 }
     }))
   );
-  // loadAll$ = createEffect( () => this.actions$.pipe(
-  //   ofType(CompanyActionTypes.LOAD_ALL), /* When action is dispatched */
-  //   startWith(new LoadAll()),
-  //   /* Hit the Contacts Index endpoint of our REST API */
-  //   /* Dispatch LoadAllSuccess action to the central store with id list returned by the backend as id*/
-  //   /* 'Contacts Reducers' will take care of the rest */
-  //   switchMap(() => this.companiesService.index().pipe(
-  //     map(companies => new LoadAllSuccess({companies}))
-  //   )),
-  // ));
-
-
-  // load$ = createEffect( () => this.actions$.pipe(
-  //   ofType(CompanyActionTypes.LOAD),
-  //   pluck('id'),
-  //   switchMap( id => this.companiesService.show(id).pipe(
-  //     map(company => new LoadSuccess({company}))
-  //   ))
-  // ));
-
-  // create$ = createEffect( () =>this.actions$.pipe(
-  //   ofType(CompanyActionTypes.CREATE),
-  //   pluck('company'),
-  //   switchMap( company => this.companiesService.create(company).pipe(
-  //     map(company => new CreateSuccess({company})),
-  //     // catchError(err => {      // all errors are catched global
-  //     //   alert(err.message);
-  //     //   return of(failure({err: {concern: 'CREATE', error: err}}));
-  //     // })
-  //   ))
-  // ));
-
-
-  // update$ = createEffect( () => this.actions$.pipe(
-  //   ofType(CompanyActionTypes.UPDATE),
-  //   pluck('company'),
-  //   exhaustMap( company => this.companiesService.update(company).pipe(
-  //     map(company => new UpdateSuccess({company}))
-  //   ))
-  // ));
-
-  // destroy$ = createEffect( () => this.actions$.pipe(
-  //   ofType(CompanyActionTypes.REMOVE),
-  //   pluck('id'),
-  //   switchMap( id => this.companiesService.destroy(id).pipe(
-  //     pluck('id'),
-  //     map(id => new RemoveSuccess({id}))
-  //   ))
-  // ));
 
   // Socket Live Events   // TODO: czy zostawic te sockety ? powoduja podwójne akcje, narazie wyłączone
 

@@ -2,8 +2,15 @@
 <div class="container-fluid">
   <router-outlet></router-outlet>
 
-  <!-- <div *ngIf="isLoading" style="text-align: center;">
+  <!-- <div *ngIf="!(loading | async)" style="text-align: center;">
     <app-loading-spinner></app-loading-spinner>
   </div> -->
+
 </div>
+<ng-content *ngIf="!(loading | async); else spinner"></ng-content>
+  <ng-template #spinner>
+    <div style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  </ng-template>
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
