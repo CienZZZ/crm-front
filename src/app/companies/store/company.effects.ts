@@ -34,7 +34,7 @@ import {
   CREATE_COMPANY_DIALOG_OPEN,
   CreateCompanyDialogClose,
   CREATE_COMPANY_DIALOG_CLOSE} from './company.actions';
-import { ToastOpen } from '../../state/toast/toast.actions';
+import { ToastOpen } from '../../shared/toast/store/toast.actions';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NewCompanyDialogComponent } from '../dialogs/new-company/new-company-dialog.component';
 
@@ -78,11 +78,11 @@ export class CompanyEffects {
   createCompanySuccess: Observable<Action> = this.actions.pipe(
     ofType<CreateCompanySuccess>(CREATE_COMPANY_SUCCESS),
     mergeMap(() => [
+      new CreateCompanyDialogClose(),
       new ToastOpen({
         message: 'Company created!',
-        options: { classname: 'bg-success text-light', delay: 5000 }
-      }),
-      new CreateCompanyDialogClose()
+        options: { classname: 'bg-success text-light', delay: 5000}
+      })
     ])
   );
 
@@ -187,7 +187,7 @@ export class CompanyEffects {
   //   ))
   // ));
 
-  // Socket Live Events
+  // Socket Live Events   // TODO: czy zostawic te sockety ? powoduja podwójne akcje
 
   @Effect()
   liveCreate$ = this.companiesSocket.liveCreated$.pipe(

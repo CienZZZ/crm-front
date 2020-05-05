@@ -5,7 +5,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // import { AlertComponent } from './alert/alert.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { ToastComponent } from './toast/toast.component';
+import { ToastContainerComponent } from './toast/toast-container.component';
+import { ToastService } from './toast/toast.service';
+import { EffectsModule } from '@ngrx/effects';
+import { ToastEffects } from './toast/store/toast.effects';
 // import { DropdownDirective } from './dropdown.directive';
 // import { PlaceholderDirective } from './placeholder/placeholder.directive';
 
@@ -15,12 +18,13 @@ import { ToastComponent } from './toast/toast.component';
     LoadingSpinnerComponent,
     // DropdownDirective,
     // PlaceholderDirective
-    ToastComponent
+    ToastContainerComponent
   ],
   imports: [
     CommonModule,
     FullCalendarModule,
-    NgbModule
+    NgbModule,
+    EffectsModule.forFeature([ToastEffects])
   ],
   exports: [
     // AlertComponent,
@@ -30,7 +34,9 @@ import { ToastComponent } from './toast/toast.component';
     FullCalendarModule,
     // PlaceholderDirective,
     NgbModule,
-    ToastComponent
-  ]
+    ToastContainerComponent
+  ],
+  // entryComponents: [ToastContainerComponent],
+  // providers: [ToastService]
 })
 export class SharedModule {}

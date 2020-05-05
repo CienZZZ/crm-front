@@ -19,7 +19,7 @@ export class ToastEffects {
     ofType<ToastOpen>(TOAST_OPEN),
     map((action: ToastOpen) => action.payload),
     tap(payload => this.toastService.show(payload.message, payload.options)),
-    delay(2000),
+    delay(5000),
     map(() => new ToastClose())
   );
 

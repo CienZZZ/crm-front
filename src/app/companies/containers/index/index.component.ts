@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Company } from '../../model/company.model';
 import { Store, select } from '@ngrx/store';
 import { CompaniesState, getAllCompanies } from '../../store';
-import { LoadAllCompany, CreateCompany, RemoveCompany, CreateCompanyDialogOpen } from 'src/app/companies/store/company.actions';
+import { LoadAllCompany, RemoveCompany, CreateCompanyDialogOpen } from 'src/app/companies/store/company.actions';
 
 @Component({
   selector: 'app-index',

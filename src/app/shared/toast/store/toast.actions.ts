@@ -1,4 +1,4 @@
-import { createActionType } from '../shared/utils';
+import { createActionType } from '../../../state/shared/utils';
 import { Action } from '@ngrx/store';
 
 export const TOAST_OPEN = createActionType('TOAST_OPEN');
@@ -8,7 +8,7 @@ export class ToastOpen implements Action {
   readonly type = TOAST_OPEN;
   constructor(public payload: {
     message: string,
-    options?: {}
+    options?: any
   }) {}
 }
 

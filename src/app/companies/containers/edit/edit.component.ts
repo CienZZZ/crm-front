@@ -3,10 +3,9 @@ import { Observable } from 'rxjs';
 import { Company } from '../../model/company.model';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { CompaniesState, getCompanyEntities, getSelectedCompany, getCompaniesTotal } from 'src/app/companies/store';
-import { tap, first, switchMap, take, single, map } from 'rxjs/operators';
+import { CompaniesState, getSelectedCompany, getCompaniesTotal } from 'src/app/companies/store';
+import { tap, first, switchMap, map } from 'rxjs/operators';
 import { SelectCompany, UpdateCompany, LoadCompany } from 'src/app/companies/store/company.actions';
-// import { ToastComponent } from 'src/app/shared/toast/toast.component';
 
 @Component({
   selector: 'app-edit',
@@ -19,7 +18,6 @@ export class EditComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    // private toast: ToastComponent, // TODO: moze byc potrzebny ??
     private store: Store<CompaniesState>
   ) {}
 

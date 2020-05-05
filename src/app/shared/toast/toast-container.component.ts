@@ -4,7 +4,7 @@ import {ToastService} from './toast.service';
 
 
 @Component({
-  selector: 'app-toast',
+  selector: 'app-toasts',
   template: `
     <ngb-toast
       *ngFor="let toast of toastService.toasts"
@@ -22,7 +22,7 @@ import {ToastService} from './toast.service';
   `,
   host: {'[class.ngb-toasts]': 'true'}
 })
-export class ToastComponent {
+export class ToastContainerComponent {
   constructor(public toastService: ToastService) {}
 
   isTemplate(toast) { return toast.textOrTpl instanceof TemplateRef; }
