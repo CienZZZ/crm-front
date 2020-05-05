@@ -5,6 +5,6 @@ import * as fromToast from '../shared/toast/store/toast.reducer';
 
 export interface AppState {
   router: RouterReducerState<RouterStateUrl>;
-  // toast: fromToast.State;
+  toast: fromToast.State;
   // spinner: fromSpinner.State;
 }

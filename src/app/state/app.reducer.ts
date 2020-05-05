@@ -8,7 +8,7 @@ import * as fromToast from '../shared/toast/store/toast.reducer';
 
 export const appReducer: ActionReducerMap<AppState> = {
   router: routerReducer,
-  // toast: fromToast.reducer
+  toast: fromToast.reducer
   // spinner: fromSpinner.reducer
 };
 
