@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  exhaustMap,
-  map, pluck,
-  startWith,
+  map,
   switchMap,
   mergeMap,
   tap
@@ -11,7 +9,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CompaniesService } from '../services/companies.service';
-import { CompaniesSocketService } from '../services/companies-socket.service';
+// import { CompaniesSocketService } from '../services/companies-socket.service';
 import {
   LOAD_COMPANY,
   CreateCompany,
@@ -187,28 +185,28 @@ export class CompanyEffects {
   //   ))
   // ));
 
-  // Socket Live Events   // TODO: czy zostawic te sockety ? powoduja podwójne akcje
+  // Socket Live Events   // TODO: czy zostawic te sockety ? powoduja podwójne akcje, narazie wyłączone
 
-  @Effect()
-  liveCreate$ = this.companiesSocket.liveCreated$.pipe(
-    map(company => new CreateCompanySuccess(company))
-  );
+  // @Effect()
+  // liveCreate$ = this.companiesSocket.liveCreated$.pipe(
+  //   map(company => new CreateCompanySuccess(company))
+  // );
 
 
-  @Effect()
-  liveUpdate$ = this.companiesSocket.liveUpdated$.pipe(
-    map(company => new UpdateCompanySuccess(company))
-  );
+  // @Effect()
+  // liveUpdate$ = this.companiesSocket.liveUpdated$.pipe(
+  //   map(company => new UpdateCompanySuccess(company))
+  // );
 
-  @Effect()
-  liveDestroy$ = this.companiesSocket.liveDeleted$.pipe(
-    map(company => new RemoveCompanySuccess(company))
-  );
+  // @Effect()
+  // liveDestroy$ = this.companiesSocket.liveDeleted$.pipe(
+  //   map(company => new RemoveCompanySuccess(company))
+  // );
 
   constructor(
     private actions: Actions,
     private companiesService: CompaniesService,
-    private companiesSocket: CompaniesSocketService,
+    // private companiesSocket: CompaniesSocketService,
     private modalService: NgbModal
   ) {}
 

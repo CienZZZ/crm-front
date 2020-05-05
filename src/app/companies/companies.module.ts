@@ -11,7 +11,7 @@ import { EditCompanyComponent } from './components/edit-company/edit-company.com
 import { CompaniesComponent } from './components/companies/companies.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
 import { CompaniesService } from './services/companies.service';
-import { CompaniesSocketService } from './services/companies-socket.service';
+// import { CompaniesSocketService } from './services/companies-socket.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CompanyEffects } from './store/company.effects';
@@ -36,7 +36,7 @@ import { NewCompanyDialogComponent } from './dialogs/new-company/new-company-dia
     StoreModule.forFeature('companies', reducers),
     EffectsModule.forFeature([CompanyEffects])
   ],
-  providers: [CompaniesService , CompaniesSocketService],
+  providers: [CompaniesService ], // CompaniesSocketService],   // TODO: sockety wylaczone
   entryComponents: [NewCompanyDialogComponent]
 })
 

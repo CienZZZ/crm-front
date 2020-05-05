@@ -9,12 +9,12 @@ export const environment = {
   appApi: {
     baseUrl: 'http://localhost:3000'
   },
-  socketConfig: {
-    url: 'http://localhost:3000',
-    opts: {
-      transports: ['websocket']
-    }
-  }
+  // socketConfig: {
+  //   url: 'http://localhost:3000',
+  //   opts: {
+  //     transports: ['websocket']
+  //   }
+  // }  // TODO: sockety wylaczone
 };
 
 /*
