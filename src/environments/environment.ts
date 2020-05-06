@@ -7,7 +7,8 @@ export const environment = {
   firebaseAPIKey: 'AIzaSyCsoYgnbTpo3N7f7_RObx-z0snwwuIuRRs ',
   firebaseDatabaseURL: 'https://crm-front-52411.firebaseio.com',
   appApi: {
-    baseUrl: 'http://localhost:3000'
+    // baseUrl: 'http://localhost:3000'
+    baseUrl: 'http://localhost:9090/api'
   },
   // socketConfig: {
   //   url: 'http://localhost:3000',
