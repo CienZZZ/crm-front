@@ -14,8 +14,8 @@ export class EditCompanyComponent implements OnInit, OnChanges {
   @Input() company: Company = {
     id: undefined,
     name: '',
-    full_name: '',
-    created_by: ''
+    fullName: '',
+    createdBy: ''
   };
 
   @Output() companyChange = new EventEmitter<Company>();
@@ -55,8 +55,8 @@ export class EditCompanyComponent implements OnInit, OnChanges {
     this.form = this.formBuilder.group({
       id: [this.company.id],
       name: [this.company.name, Validators.required],
-      full_name: [this.company.full_name],
-      created_by: [this.company.created_by]
+      fullName: [this.company.fullName],
+      createdBy: [this.company.createdBy]
     });
   }
 

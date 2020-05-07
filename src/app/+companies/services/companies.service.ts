@@ -13,24 +13,24 @@ export class CompaniesService {
 
 
   getCompanies(): Observable<Array<Company>> {
-    return this.http.get<Array<Company>>(`${environment.appApi.baseUrl}/companys`);
+    return this.http.get<Array<Company>>(`${environment.appApi.baseUrl}/company`);
   }
 
   getCompany(id: number): Observable<Company> {
-    return this.http.get<Company>(`${environment.appApi.baseUrl}/companys/${id}`);
+    return this.http.get<Company>(`${environment.appApi.baseUrl}/company/${id}`);
   }
 
   createCompany(company: Company): Observable<Company> {
-    return this.http.post<Company>(`${environment.appApi.baseUrl}/companys`, company);
+    return this.http.post<Company>(`${environment.appApi.baseUrl}/company`, company);
   }
 
   updateCompany(company: Partial<Company>): Observable<Company> {
-    return this.http.patch<Company>(`${environment.appApi.baseUrl}/companys/${company.id}`, company);
+    return this.http.patch<Company>(`${environment.appApi.baseUrl}/company/${company.id}`, company);
   }
 
 
   destroyCompany(company: Company): Observable<Company> {
-    return this.http.delete(`${environment.appApi.baseUrl}/companys/${company.id}`)
+    return this.http.delete(`${environment.appApi.baseUrl}/company/${company.id}`)
       .pipe(
         switchMap(() => of(company))
       );
